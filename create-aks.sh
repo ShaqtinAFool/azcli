@@ -3,8 +3,8 @@
 export VNET_RESOURCE_ID="/subscriptions/56d91c85-cf61-42ee-82df-68714c92ab74/resourceGroups/Infra/providers/Microsoft.Network/virtualNetworks/SDZVNet"
 export AKS_RESOURCE_GROUP=Test
 export AKS_LOCATION=japaneast
-export AKS_GATEWAY=app1-gateway
-export CLUSTER_NAME=app1-cluster
+export AKS_GATEWAY=tonylee
+export CLUSTER_NAME=tonylee
 
 # AKS (CNI) + AppGw
 az aks create \
@@ -31,7 +31,7 @@ az aks create \
     --generate-ssh-keys \
     --enable-addons ingress-appgw \
     --enable-private-cluster \
-    --network-plugin azure \
+    --network-plugin kubenet \
     --appgw-name ${AKS_GATEWAY} \
     --appgw-subnet-id "${VNET_RESOURCE_ID}/Subnets/AUO-ABS000_AppGw" \
     --load-balancer-sku standard \
